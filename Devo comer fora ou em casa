@@ -1,0 +1,20 @@
+# Importando biblioteca
+from sklearn.linear_model import Perceptron
+
+# Dados de entrada
+X = [[0, 1, 1, 1], [1, 0, 1, 1], [1, 1, 0, 1], [0, 0, 1, 0], [1, 1, 1, 1], [0, 1, 0, 0], [1, 0, 0, 1], [0, 0, 0, 1]]
+
+# Saídas desejadas
+Y = [0, 1, 0, 1, 1, 0, 0, 0]
+
+# Criando e treinando o perceptron
+modelo = Perceptron()
+modelo.fit(X, Y)
+
+# Testando o modelo
+print("Comer fora ou cozinhar:")
+testes = [[0, 1, 1, 1], [1, 0, 1, 1], [1, 1, 0, 1], [0, 0, 1, 0], [1, 1, 1, 1], [0, 1, 0, 0], [1, 0, 0, 1], [0, 0, 0, 1]]
+for teste in testes:
+  previsao = modelo.predict([teste])
+  # Changed the index from 4 to 3 to access the 'Pagamento recente' element
+  print(f"Cansado: {teste[0]}, Ingredientes em casa: {teste[1]}, Restaurantes abertos: {teste[2]}, Pagamento recente: {teste[3]} => Devo comer fora? {'Sim' if previsao[0] == 1 else 'Não'}")
